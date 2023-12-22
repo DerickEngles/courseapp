@@ -1,0 +1,10 @@
+css
+Copy code
+/* Adicione estilos para a classe image-container */
+.image-container-events img {
+    max-width: 50px; /* Defina o tamanho máximo da imagem */
+    border: 1px solid #ccc; /* Adicione uma borda à imagem */
+    border-radius: 5px; /* Arredonde os cantos da imagem */
+    padding: 5px; /* Adicione um espaço interno à imagem */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Adicione uma sombra à imagem */
+}

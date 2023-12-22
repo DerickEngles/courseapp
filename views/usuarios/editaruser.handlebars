@@ -1,0 +1,32 @@
+{{#each erros}}
+    <div class="alert alert-danger"> {{texto}} </div>
+{{else}}
+
+{{/each}}
+
+<h2>Editar dados</h2>
+
+<div class="card">
+    <div class="card-body">
+        <form action="" method="post" enctype="multipart/form-data"> <!--Só especifico o action se a rota para a qual enviarei os dados é diferenta daquele que renderiza a página. No caso, o get e o post têm o mesmo nome, portanto são a mesma rota, mas o sistema é inteligente o suficiente para saber quando é get e quando é post.-->
+            <label for="nome">Nome: </label>
+                <input type="text" name="nome" class="form-control" value="{{usuario.nome}}"> <!--required serve para fazer uma validação de dados. Os values estão passando dados para os campos, onde teremos os dados atuais sendo passaods para termos um pré-preencimento dos campos.-->
+            <label for="email">E-mail: </label>
+                <input type="email" name="email" class="form-control" value="{{usuario.email}}" required>
+            <label for="descricao">Descrição: </label>
+                <input type="text" name="descricao" class="form-control" value="{{usuario.descricao}}"required>
+            <label for="senha">Senha: </label>
+                <input type="password" name="senha" class="form-control" value="{{usuario.senha}}"required>
+            <label for="senha2">Repita a sua senha: </label>
+                <input type="password" name="senha2" class="form-control" value="{{usuario.senha}}"required>
+            <!--Não é possível realizar o pré-preenchimento do campo de imagem. Então, vamos exibir a imagem antiga e o usuário vai decidir por alterar ou não-->
+            <h4>Imagem atual:</h4>
+            <div class="image-container-events">
+                    <img src="{{usuario.imagem}}" alt="Imagem do usuario" style="max-width: 300px; border: 1px solid #ccc; border-radius: 5px; padding: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+            </div>
+            <label for="imagem"><h4>Modificar imagem atual?</h4> </label> 
+                <input type="file" id="imagem" name="imagem" placeholder="Carregue a imagem" class="form-control"> 
+            <button type="submit" class="btn btn-success mt-4">Salvar dados</button>
+        </form>
+    </div>
+</div>

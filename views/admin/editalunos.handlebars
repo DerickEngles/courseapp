@@ -1,0 +1,33 @@
+{{#each erros}} <!--erros vem da rota post em admin-->
+    <div class="alert alert-danger">{{texto}}</div> <!--Vamos aplicar a seguinte configuração em cada erro que tivermos-->
+{{else}}
+
+{{/each}}
+<h3>Editar dados do Aluno: {{aluno.nome}}</h1>
+<!--quanto mais divs, mais enquadrado fica o nosso template. É como adicionar frames/molduras-->
+<div class="card">
+    <div class="card-body">
+        <form action="/admin/alunos/editpost" method="POST"> <!--rota post que vamos criar em admin - rota tem sempre a / na frente-->
+        <input type="hidden" name="id" value="{{aluno._id}}"> <!--Precisamo passar o id para rota de edição para realizar a busca do aluno no banco de dados e para repassarmos para cá caso tenhamos erros na lista erros de validação-->
+        <label for="nome">Nome completo: </label> <!--for indica qual input este label está associado. Nesse caso, um que tenhamos o input de id "nome" logo abaixo-->
+            <input type="text" id="nome" name="nome" placeholder="Nome completo do aluno" class="form-control" value="{{aluno.nome}}">
+        <label for="email">E-mail: </label>
+            <input type="text" id="email" name="email" placeholder="Digite o e-mail do aluno" class="form-control" value="{{aluno.email}}">
+        <label for="javascript">Nota javascript: </label>
+            <input type="text" id="javascript" name="javascript" placeholder="Nota em Javascript" class="form-control" value="{{aluno.javascript}}">
+        <label for="html">Nota HTML: </label>
+            <input type="text" id="html" name="html" placeholder="Nota em HTML" class="form-control" value="{{aluno.html}}">
+        <label for="css">Nota css: </label>
+            <input type="text" id="css" name="css" placeholder="Nota em CSS" class="form-control" value="{{aluno.css}}">
+        <label for="node_js">Nota Node.js: </label> <!--O nome em "for" garante que o browser reconheça a qual input se refere e focará nele quando 
+        o usuário clicar para preencher, o que significa que necessito ter o mesmo nome de for em id e name no input-->
+            <input type="text" id="node_js" name="node_js" placeholder="Nota em Node.js" class="form-control" value="{{aluno.node_js}}">
+        <label for="react">Nota React: </label>
+            <input type="text" id="react" name="react" placeholder="Nota em React" class="form-control" value="{{aluno.react}}">
+        <label for="slug">Slug: </label>
+            <input type="text" id="slug" name="slug" placeholder="Slug do aluno" class="form-control" value="{{aluno.slug}}">
+            <br>
+        <button type="submit" class="btn btn-success">Editar aluno</button>
+        </form>
+    </div>
+</div>

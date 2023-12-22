@@ -1,0 +1,40 @@
+<h2>Lista de Eventos</h2> 
+<hr>
+<a href="/admin/eventos/add"><button class="btn btn-success">Adicionar novo evento</button></a>
+
+{{#each eventos}}
+    <div class="card mt-4">
+        <div class="card-body">
+            <div class="image-container-events">
+                <img src="{{imagem}}" alt="Imagem do Evento" style="max-width: 800px; border: 1px solid #ccc; border-radius: 5px; padding: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);"> <!--alt serve para caso tenhamos erro ao exibir a imagem
+                style="max-width: 300px; border: 1px solid #ccc; border-radius: 5px; padding: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);" - APLICAMOS UM CSS DIRETAMENTE NA IMAGEM, POIS
+                O ARQUIVO CSS NÃO ESTÁ SURTINDO EFEITO-->
+            </div>
+            <small>Título do evento: </small> 
+            <h4>{{titulo}}</h4>
+            <small><b>Assunto:</b> {{assunto}}</small>
+            <br>
+            <br>
+            <small><b>Conteúdo:</b> {{conteudo}}:</small>
+            <br>
+            <br>
+            <small><b>Slug:</b> {{slug}}</small>
+            <br>
+            <br>
+            <small><b>Data de criação:</b> {{date}}</small>
+            <div class="d-flex"> <!--Para colocar os botões um do lado do outro-->
+                <a href="/admin/eventos/editar/{{_id}}"><button class="btn btn-success mt-2">Editar dados do evento</button></a> <!--Tive que modificar o botão, pois precisamos passar informações para a rota get e não podemos fazer como fizemos abaixo com delete que é uma rota POST-->
+                <div class="mx-2"></div> <!--Para colocar um espaço entre os botões-->
+                <form action="/admin/eventos/deletar" method="POST">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button type="submit" class="btn btn-danger mt-2">Deletar evento</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{else}}
+    <h4 class="mt-3">Nenhum evento registrado!</h4>
+{{/each}}
+
+<!-- Adicione o link para o seu arquivo CSS -->
+<link rel="stylesheet" href="/css/styles-eventos.css"> <!--é um atributo para definir o tipo de relação que este arquivo terá com aquele que estamos acessando. Sendo uma relação do tipo estilização, no qual o arquivo acessado é um CSS, necessitamos informar stylesheet.-->

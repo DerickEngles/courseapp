@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.css"> <!--2-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Programação NodeJS</title> <!--1-->
+</head>
+<body>
+    {{>_navbar}} <!--3 - a > já detecta o caminho para o arquivo em partials-->
+    <div class="container mt-4"> <!--4-->
+        {{#if error}} <!--Essa var error foi definida no app.js para pegar os erros de autenticação.-->
+            <div class="alert alert-danger">{{this.error}}</div> <!--No contexto de Handlebars, o uso de this geralmente se refere ao objeto atual, permitindo que você acesse propriedades ou métodos dentro desse contexto específico.-->
+        {{else}}
+        {{/if}}
+        <!--
+        {{#if success_msg}} Não funcionou também
+            <div class="alert alert-success">{{this.success_msg}}</div>
+        {{/if}}
+        
+        {{#if success}} NÃO FUNCIONA
+            <div class="alert alert-success">{{this.success}}</div>
+            {{log this.success}} Este log pode ajudar a verificar o conteúdo da variável 'success' 
+        {{/if}}-->
+
+        {{>_msg}} <!--As de cima são as mensagens de sucesso e erro do passport definidas em auth.js. Essa aqui é referente ao success_msg e error_msg definidas em app.js e tendo seu formato html definido em partials-->
+        {{{body}}} <!--1-->
+    </div>
+</body>
+<!--2 - os arquivos abaixo foram colocados para que consigamos trabalhar com o bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+<script src="/js/bootstrap.js"></script><!--Necessitamos chamar outra tagscript para coletar o arquivo bootstrap.js dentro da pasta js em public-->
+</html>

@@ -1,0 +1,35 @@
+<h2>Lista de Alunos</h2> <!--1-->
+<hr>
+<a href="/admin/alunos/add"><button class="btn btn-success">Adicionar novo aluno</button></a> <!--2 vou redirecionar o click do botão para a rota de
+ criação de alunos. Vamos agora criar o formulário para alunos/add-->
+
+{{#each alunos}} <!--alunos, variável que definimos com os alunos que estão sendo trazido do database-->
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4>{{nome}}</h4> <!--parâmetro nome dentro de alunos-->
+            <small>E-mail: {{email}}</small><br>
+            <div class="card mt-4">
+                <h5>Notas do aluno</h5>
+                <small>Nota JavaScript: {{javascript}}</small>
+                <small>Nota HTML: {{html}}</small>
+                <small>Nota CSS: {{css}}</small>
+                <small>Nota Node.js: {{node_js}}</small>
+                <small>Nota React: {{react}}</small><br>
+                <h6>Média: {{media}}</h6>
+            </div>
+            <small>Slug: {{slug}}</small><br>
+            <small>Registrado em: {{date}}</small>
+            <!--Deste template, vamos passar o id do aluno para os botões de update e delete, bastando apenas criar as rotas-->
+            <div class="d-flex"> <!--Para colocar os botões um do lado do outro-->
+                <a href="/admin/alunos/editar/{{_id}}"><button class="btn btn-success mt-2">Editar dados do aluno</button></a> <!--Tive que modificar o botão, pois precisamos passar informações para a rota get e não podemos fazer como fizemos abaixo com delete que é uma rota POST-->
+                <div class="mx-2"></div> <!--Para colocar um espaço entre os botões-->
+                <form action="/admin/alunos/deletar" method="POST">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button type="submit" class="btn btn-danger mt-2">Deletar aluno</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{else}} <!--caso não exista nenhum aluno registrado-->
+    <h4 class="mt-3">Nenhum aluno registado!</h4>
+{{/each}}

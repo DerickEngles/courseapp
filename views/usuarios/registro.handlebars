@@ -1,0 +1,29 @@
+{{#each erros}}
+    <div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+<h2>Registre-se</h2>
+<hr>
+<h3>Venha estudar no melhor curso de programação do Brasil!</h3>
+<div class="card">
+    <div class="card-body">
+        <form action="" method="post" enctype="multipart/form-data">
+            <label for="nome">Nome: </label>
+                <input type="text" name="nome" class="form-control" required> <!--required serve para fazer uma validação de dados-->
+            <label for="email">E-mail: </label>
+                <input type="email" name="email" class="form-control" required>
+            <label for="descricao">Descrição: </label>
+                <input type="text" name="descricao" class="form-control" required>
+            <label for="senha">Senha: </label>
+                <input type="password" name="senha" class="form-control" required>
+            <label for="senha2">Repita a sua senha: </label>
+                <input type="password" name="senha2" class="form-control" required>
+            <label for="imagem">Imagem: </label> <!--for indica qual input este label está associado. Nesse caso, um que tenhamos o input de id "nome" logo abaixo-->
+                <input type="file" id="imagem" name="imagem" placeholder="Carregue a imagem" class="form-control"> <!--removemos o required, pois ele exige uma imagem, algo que não desejamos caso o usuário não queria. O tratamento para definição de imagem padrão será feita no back-end.-->
+            <button type="submit" class="btn btn-success mt-4">Criar sua conta</button>
+        </form>
+    </div>
+</div>
+
+<!--a class form-control confere um aspecto para o input de espaço para realizar preenchimento de dados. É um estilo do bootstrap-->

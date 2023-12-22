@@ -1,0 +1,28 @@
+{{#each erros}} <!--Para o caso de haver erros vindos da rota POST que vamos criar. Vamos adicionar um texto na lista erros que será passada para a variável erros-->
+    <div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+<h3>Novo Eventos</h1>
+<!--quanto mais divs, mais enquadrado fica o nosso template. É como adicionar frames/molduras.
+
+O for definido em cada label faz com que o navegado coloque destaque nele quando clicarmos em cima dele-->
+<div class="card">
+    <div class="card-body">
+        <form action="/admin/eventos/addpost" method="POST" enctype="multipart/form-data"> <!--rota post que vamos criar em admin - rota tem sempre a / na frente
+        Essa enctype="multipart/form-data" é importante para upload de imagens. O upload/imagem também será emitida para a rota addpost-->
+        <label for="titulo">Título do Evento: </label>
+            <input type="text" id="titulo" name="titulo" placeholder="Digite o título do evento" class="form-control" required>
+        <label for="assunto">Assunto: </label>
+            <input type="text" id="assunto" name="assunto" placeholder="Digite o assunto do evento" class="form-control" required>
+        <label for="conteudo">Conteúdo: </label>
+            <textarea id="conteudo" name="conteudo" placeholder="Digite o conteúdo" class="form-control" required></textarea>
+        <label for="slug">Slug: </label>
+            <input type="text" id="slug" name="slug" placeholder="Slug do evento" class="form-control">
+        <label for="imagem">Imagem: </label> <!--for indica qual input este label está associado. Nesse caso, um que tenhamos o input de id "nome" logo abaixo-->
+            <input type="file" id="imagem" name="imagem" placeholder="Carregue a imagem" class="form-control">
+            <br>
+        <button type="submit" class="btn btn-success">Adicionar evento</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+{{#each erros}} <!--erros vem da rota post em admin-->
+    <div class="alert alert-danger">{{texto}}</div> <!--Vamos aplicar a seguinte configuração em cada erro que tivermos-->
+{{else}}
+
+{{/each}}
+<h3>Editar dados do Evento: {{evento.titulo}}</h1>
+<!--quanto mais divs, mais enquadrado fica o nosso template. É como adicionar frames/molduras-->
+<div class="card">
+    <div class="card-body">
+        <form action="/admin/eventos/editpost" method="POST" enctype="multipart/form-data"> <!--rota post que vamos criar em admin - rota tem sempre a / na frente
+        Essa enctype="multipart/form-data" é importante para upload de imagens. O upload/imagem também será emitida para a rota addpost-->
+        <input type="hidden" name="id" value="{{evento._id}}"> <!--Necessitamos passar o id para a rota post (é enviado os dados que estão dentro desse form. Isso é feito, pois definimos em action a rota que vai receber os dados)-->
+        <label for="titulo">Título do Evento: </label>
+            <input type="text" id="titulo" name="titulo" placeholder="Digite o título do evento" class="form-control" value="{{evento.titulo}}" required>
+        <label for="assunto">Assunto: </label>
+            <input type="text" id="assunto" name="assunto" placeholder="Digite o assunto do evento" class="form-control" value="{{evento.assunto}}" required>
+        <label for="conteudo">Conteúdo: </label>
+            <textarea id="conteudo" name="conteudo" placeholder="Digite o conteúdo" class="form-control"required>{{evento.conteudo}}</textarea>
+        <label for="slug">Slug: </label>
+            <input type="text" id="slug" name="slug" placeholder="Slug do evento" class="form-control" value="{{evento.slug}}">
+        <div class="image-container-events">
+            <img src="{{evento.imagem}}" alt="Imagem do evento" style="max-width: 800px; border: 1px solid #ccc; border-radius: 5px; padding: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+        </div>
+        <label for="imagem"><h4>Modificar imagem atual?</h4></label> <!--for indica qual input este label está associado. Nesse caso, um que tenhamos o input de id "nome" logo abaixo-->
+            <input type="file" id="imagem" name="imagem" placeholder="Carregue a imagem" class="form-control">
+            <br>
+        <button type="submit" class="btn btn-success">Editar evento</button>
+        </form>
+    </div>
+</div>
